@@ -39,7 +39,7 @@ class TripsController < ApplicationController
     @venues = Venue.near([@trip.latitude, @trip.longitude], @trip.radius)
 
     if params[:query].present?
-      @query = true
+      @query = params[:query]
       @venues = @venues.search_by_category(params[:query])
     end
 

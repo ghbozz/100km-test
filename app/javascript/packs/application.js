@@ -14,3 +14,9 @@ window.addEventListener('DOMContentLoaded', () => {
 	initMapbox();
 });
 // });
+
+document.querySelector('#query').addEventListener('keyup', event => {
+	document.querySelectorAll('.trip_venue_query input').forEach(input => {
+		input.value = event.target.value;
+	});
+});

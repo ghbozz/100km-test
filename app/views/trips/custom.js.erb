@@ -31,5 +31,11 @@ var initRemoveMarker = () => {
 	document.querySelectorAll('.remove-venue').forEach(bindRemoveVenue);
 };
 
+<% if @query %>
+	document.querySelectorAll('.trip_venue_query input').forEach(input => {
+		input.value = "<%= @query %>";
+	});
+<% end %>
+
 initRemoveMarker();
 initAddMarker();

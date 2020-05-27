@@ -1,7 +1,7 @@
-<% if !@query %>
-	document.querySelector(".venues-list")
-	        .innerHTML = "<%= j render 'trips/venues_list', venues: @venues %>"
-<% end %>
+
+document.querySelector(".venues-list")
+	      .innerHTML = "<%= j render 'trips/venues_list', venues: @venues %>"
+
 
 
 // ADD 
@@ -37,6 +37,12 @@ var bindRemoveVenue = btn => {
 var initRemoveMarker = () => {
 	document.querySelectorAll('.remove-venue').forEach(bindRemoveVenue);
 };
+
+<% if @query.present? %>
+	document.querySelectorAll('.trip_venue_query input').forEach(input => {
+		input.value = "<%= @query %>";
+	});
+<% end %>
 
 initAddMarker();
 initRemoveMarker();
