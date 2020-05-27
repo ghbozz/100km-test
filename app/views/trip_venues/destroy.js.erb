@@ -1,2 +1,40 @@
 document.querySelector(".venues-list")
         .innerHTML = "<%= j render 'trips/venues_list', venues: @venues %>"
+
+
+// ADD 
+var addActive = event => {
+	var id = event.target.id.split('-')[1];
+	var marker = document.querySelector(`#marker-${id}`);
+	marker.classList.add('marker-active');
+	// console.log(marker);
+};
+
+var bindAddVenue = btn => {
+	// console.log(btn);
+	btn.addEventListener('click', addActive);
+};
+
+var initAddMarker = () => {
+	document.querySelectorAll('.add-venue').forEach(bindAddVenue);
+};
+
+// REMOVE
+var removeActive = event => {
+	var id = event.target.id.split('-')[1];
+	var marker = document.querySelector(`#marker-${id}`);
+	marker.classList.remove('marker-active');
+	console.log(marker);
+};
+
+var bindRemoveVenue = btn => {
+	// console.log(btn);
+	btn.addEventListener('click', removeActive);
+};
+
+var initRemoveMarker = () => {
+	document.querySelectorAll('.remove-venue').forEach(bindRemoveVenue);
+};
+
+initAddMarker();
+initRemoveMarker();
