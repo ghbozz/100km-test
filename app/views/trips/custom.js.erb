@@ -1,7 +1,6 @@
-<% if !@query %>
-	document.querySelector(".venues-list")
-	        .innerHTML = "<%= j render 'trips/venues_list', venues: @venues %>"
-<% end %>
+document.querySelector(".venues-list")
+        .innerHTML = "<%= j render 'trips/venues_list', venues: @venues %>"
+
 // ADD 
 var addActive = event => {
 	var id = event.target.id.split('-')[1];

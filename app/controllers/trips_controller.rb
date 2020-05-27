@@ -6,7 +6,6 @@ class TripsController < ApplicationController
 
   def show
     @trip = Trip.find(params[:id])
-    @trips = Trip.geocoded # returns trips with coordinates
 
     @trip_marker = [
       {
@@ -38,7 +37,12 @@ class TripsController < ApplicationController
   def custom
     @trip = Trip.find(params[:id])
     @venues = Venue.near([@trip.latitude, @trip.longitude], @trip.radius)
-    @trips = Trip.geocoded
+
+    if params[:query].present?
+      @query = true
+      @venues = @venues.search_by_category(params[:query])
+    end
+
     @trip_marker = [
       {
         lat: @trip.latitude,

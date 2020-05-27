@@ -1,6 +1,14 @@
 
 <%#= @trip.address %>
 <div class="map-container">
+  <%= form_tag custom_trip_path(@trip), method: :get, remote: true do %>
+    <%= text_field_tag :query,
+      params[:query],
+      class: "form-control",
+      placeholder: "Find by Category"
+    %>
+    <%= submit_tag "Search", class: "btn btn-primary" %>
+  <% end %>
   <div class="venues-list">
     <%= render 'venues_list', venues: @venues %>
   </div>
